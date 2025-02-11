@@ -21,3 +21,9 @@
         padding: 50px 20px; /* Reduce padding on small screens */
     }
 }
+
+
+article.container {
+    max-width: 60%;
+    margin: 0 auto;
+}

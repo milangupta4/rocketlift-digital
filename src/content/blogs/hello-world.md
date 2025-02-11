@@ -1,5 +1,4 @@
 ---
-slug: "hello-world"
 title: "Hello, World!"
 date: "2024-03-19"
 author: "Your Name"

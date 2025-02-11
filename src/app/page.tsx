@@ -1,4 +1,4 @@
-import Image from "next/image";
+// import Image from "next/image";
 // import Link from 'next/link';
 
 import { Button } from '@/components/ui/button';
@@ -24,7 +24,6 @@ export default function Home() {
         <h2 className="text-3xl font-semibold mb-8 text-center">About Us</h2>
         <div className="flex flex-col md:flex-row items-center">
           <div className="md:w-1/2 mb-6 md:mb-0">
-            <Image src="../../assets/about-us.png" alt="About Us" className="w-full h-auto rounded-lg shadow-md" />
           </div>
           <div className="md:w-1/2 md:pl-12">
             <p className="text-gray-700 mb-4">

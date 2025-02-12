@@ -13,6 +13,15 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            'img': {
+              margin: '2rem 0',
+            },
+          },
+        },
+      },
     },
   },
   plugins: [typography],

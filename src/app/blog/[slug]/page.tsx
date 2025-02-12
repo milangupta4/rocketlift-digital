@@ -5,6 +5,7 @@ import { BlogPost } from '@/types/blog';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import { MDXImage } from '@/components/MDXImage';
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -42,7 +43,14 @@ export default async function BlogPostPage({ params }: PageProps) {
       <h1 className="text-4xl font-bold mb-4">{blog.title}</h1>
       <p className="text-gray-600 mb-6">{new Date(blog.date).toLocaleDateString()}</p>
       <div className="prose prose-lg">
-        <ReactMarkdown remarkPlugins={[remarkGfm]}>{blog.content}</ReactMarkdown>
+        <ReactMarkdown 
+          remarkPlugins={[remarkGfm]}
+          components={{
+            img: ({ src, alt }) => <MDXImage src={src || ''} alt={alt || ''} />
+          }}
+        >
+          {blog.content}
+        </ReactMarkdown>
       </div>
     </article>
   );

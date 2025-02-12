@@ -1,6 +1,14 @@
-.hero-section {
+.home-page .hero-section {
     background: linear-gradient(to top, rgba(219, 227, 5, 0.6), rgba(219, 227, 5, 0.4));
     color: #333; 
+}
+
+.lp {
+    background: linear-gradient(to top, rgba(62, 200, 242, 0.6), rgba(62, 200, 242, 0.2));
+    color: #333; 
+}
+
+.hero-section {
     height: 70vh; 
     padding: 100px; 
 }
@@ -26,4 +34,19 @@
 article.container {
     max-width: 60%;
     margin: 0 auto;
+}
+
+.logoContainer {
+    display: flex;
+    align-items: center;
+  }
+  
+  @media (max-width: 768px) {
+    .logoContainer .logo-image {
+      display: none;
+    }
+  }
+
+.navbar {
+    align-items: end;
 }

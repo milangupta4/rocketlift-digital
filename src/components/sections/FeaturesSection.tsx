@@ -9,11 +9,15 @@ export function FeaturesSection() {
           <h3 className="text-xl font-bold mb-4 leading-normal">ICP Definition & Positioning</h3>
           <p className="text-gray-600 leading-relaxed">We help with deep diving into your ICP, and understanding what problems they are looking to solve. Basis this, we help you define your positioning and messaging.</p>
         </Card></Link>
-        <Card className="p-6">
+        <Link href="/seo"><Card className="p-6">
           <h3 className="text-xl font-bold mb-4 leading-normal">SEO</h3>
           <p className="text-gray-600 leading-relaxed">We help you with SEO audits, and help you with SEO strategy and implementation.</p>
-        </Card>
-        {/* Repeat for other features */}
+        </Card></Link>
+        <Link href="/g2-trust-platform-marketing"><Card className="p-6">
+          <h3 className="text-xl font-bold mb-4 leading-normal">G2 & Trust Platform Marketing</h3>
+          <p className="text-gray-600 leading-relaxed">We help you with SEO audits, and help you with SEO strategy and implementation.</p>
+        </Card></Link>
+        
       </div>
     </section>
   );

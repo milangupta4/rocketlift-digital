@@ -6,7 +6,7 @@ import { FeaturesSection } from '@/components/sections/FeaturesSection';
 
 export default function Home() {
   return (
-    <div className="space-y-8 md:space-y-16">
+    <div className="home-page space-y-8 md:space-y-16">
       <section className="hero-section text-center px-4 md:px-6">
         <h1 className="text-3xl md:text-4xl font-bold py-6 md:py-12 leading-tight">
         Growth Strategies that Scale

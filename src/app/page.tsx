@@ -23,11 +23,9 @@ export default function Home() {
       <section className="container mx-auto px-4">
         <h2 className="text-3xl font-semibold mb-8 text-center">About Us</h2>
         <div className="flex flex-col md:flex-row items-center">
-          <div className="md:w-1/2 mb-6 md:mb-0">
-          </div>
           <div className="md:w-1/2 md:pl-12">
             <p className="text-gray-700 mb-4">
-              We believe Growth is about doing a bunch of experiments, learning what works and what doesn't, and then scaling them.
+              We believe Growth is about doing a bunch of experiments, learning what works, and then scaling them.
             </p>
             <p className="text-gray-700 mb-4">
               We bring a toolkit that includes SEO, Content Marketing, Ads, and Referral platforms to help you grow your business.

@@ -28,7 +28,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <Script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js" />
         <Script
           id="gtm"
           strategy="afterInteractive"

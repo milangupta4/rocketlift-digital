@@ -3,6 +3,7 @@
 
 import { Button } from '@/components/ui/button';
 import { FeaturesSection } from '@/components/sections/FeaturesSection';
+import BlogRoll from '@/components/BlogRoll';
 
 export default function Home() {
   return (
@@ -18,6 +19,9 @@ export default function Home() {
 
       {/* Features Section */}
       <FeaturesSection />
+
+      {/* Blog Roll Section */}
+      <BlogRoll />
 
       {/* About Us Section */}
       <section className="container mx-auto px-4">

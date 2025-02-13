@@ -3,6 +3,7 @@ title: "A guide to creating a sitemap for your website"
 date: "2025-02-12"
 author: "Your Name"
 excerpt: "Whether using WordPress, Next.js, Shopify or your own Website, this guide will help you create a sitemap for your website."
+image: "/images/2025/02/json-ld/Website-marketing-tool.webp"
 ---
 
 A sitemap.xml is a crucial element of modern SEO and website management. It acts as a roadmap for search engines, helping them crawl and index your site's content efficiently. Whether you're using platforms like WordPress, Shopify, or frameworks like Next.js, understanding and optimizing your sitemap can significantly enhance the visibility of your website.

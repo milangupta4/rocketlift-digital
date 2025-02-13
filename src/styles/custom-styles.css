@@ -31,11 +31,6 @@
 }
 
 
-article.container {
-    max-width: 60%;
-    margin: 0 auto;
-}
-
 .logoContainer {
     display: flex;
     align-items: center;
@@ -56,7 +51,26 @@ article img {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+
+/* Default style for mobile */
 .blog-page {
-    width: 70%;
+    width: 100%;
     margin: 0 auto;
+}
+
+/* Desktop style */
+@media (min-width: 768px) {
+    .blog-page {
+        width: 70%;
+        margin: 0 auto;
+    }
+}
+
+.blog-image-container {
+  position: relative;
+  height: 100%;
+}
+
+.blog-image-container img {
+  object-position: center;
 }

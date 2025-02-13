@@ -27,7 +27,7 @@ G2 boasts over 1.5 million verified reviews across more than 2,000 software cate
 
 For profile optimization, consider the case of Zoom, which maintains an exceptional G2 presence. 
 
-![Zoom G2 Profile](/images/2025/02/Zoom-G2-profile.png)
+![Zoom G2 Profile](/images/2025/02/G2-blog/Zoom-G2-profile.png)
 
 
 Zoom's profile includes detailed feature breakdowns, pricing transparency across all tiers, and integration documentation with over 100 popular tools. They regularly update their profile to showcase new features, maintaining an average update frequency of once per month.

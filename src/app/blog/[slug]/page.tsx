@@ -33,15 +33,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function BlogPostPage({ params }: PageProps) {
   const { slug } = await params;
   const blog: BlogPost | null = getBlogData(slug);
-
+  
   if (!blog) {
     notFound();
   }
 
+  const readingTime = Math.ceil((blog.wordCount || 0 )/ 200);   
   return (
     <article className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold mb-4">{blog.title}</h1>
-      <p className="text-gray-600 mb-6">{new Date(blog.date).toLocaleDateString()}</p>
+      <p className="text-gray-600 mb-6 py-4"><span>{new Date(blog.date).toLocaleDateString()}</span> | <span className="px-8">Reading time: {readingTime} minutes</span></p>
       <div className="prose prose-lg">
         <ReactMarkdown 
           remarkPlugins={[remarkGfm]}

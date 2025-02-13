@@ -5,6 +5,16 @@ import { BlogPost } from '@/types/blog';
 
 const blogsDirectory = path.join(process.cwd(), 'src', 'content', 'blogs');
 
+function getWordCount(content: string): number {
+  // Remove any special characters and split by whitespace
+  const words = content
+    .replace(/[^\w\s]/g, '')
+    .split(/\s+/)
+    .filter(word => word.length > 0);
+  
+  return words.length;
+}
+
 export function getAllBlogSlugs(): string[] {
   const fileNames = fs.readdirSync(blogsDirectory);
   return fileNames
@@ -14,12 +24,13 @@ export function getAllBlogSlugs(): string[] {
 
 export function getBlogData(slug: string): BlogPost | null {
   const fullPath = path.join(blogsDirectory, `${slug}.md`);
+
   if (!fs.existsSync(fullPath)) {
     return null;
   }
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
-
+  const wordCount = getWordCount(content);
   return {
     slug,
     title: data.title,
@@ -27,6 +38,7 @@ export function getBlogData(slug: string): BlogPost | null {
     author: data.author,
     excerpt: data.excerpt,
     content,
+    wordCount,
   };
 }
 

@@ -5,4 +5,5 @@ export type BlogPost = {
     content: string;
     excerpt?: string;
     author?: string;
+    wordCount?: number;
   };

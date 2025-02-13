@@ -6,14 +6,14 @@ export default function Home() {
   return (
     <HomePageClient>
       {/* Features Section */}
-      <div className="container mx-auto px-4 py-8 w-full md:w-[80%]">
+      <div className="container mx-auto px-4 pb-8 w-full md:w-[80%]">
         <FeaturesSection />
       </div>
 
       {/* Blog Roll Section */}
       <div className="home-alternating-background">
         <div className="container mx-auto px-4 py-8 w-full md:w-[70%]">
-          <h2 className="text-3xl font-semibold mb-8 text-center">Latest Blog Posts</h2>
+          <h2 className="text-3xl font-semibold mb-8 md:mb-16 text-center">Latest Blog Posts</h2>
           <BlogRoll 
             numberOfPosts={3}
           />

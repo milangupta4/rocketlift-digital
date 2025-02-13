@@ -11,15 +11,18 @@ export default function Home() {
       </div>
 
       {/* Blog Roll Section */}
-      <div className="container mx-auto px-4 py-8 w-full md:w-[70%]">
-        <BlogRoll 
-          numberOfPosts={3}
-        />
+      <div className="home-alternating-background">
+        <div className="container mx-auto px-4 py-8 w-full md:w-[70%]">
+          <h2 className="text-3xl font-semibold mb-8 text-center">Latest Blog Posts</h2>
+          <BlogRoll 
+            numberOfPosts={3}
+          />
+        </div>
       </div>
 
       {/* About Us Section */}
       <section className="container mx-auto px-4 w-full md:w-[60%]">
-        <h2 className="text-3xl font-semibold mb-8 text-center">About Us</h2>
+        <h2 className="text-3xl font-semibold mb-8 text-center">Our Growth Philosophy: Experiment, Learn, Scale</h2>
         <div className="flex flex-col md:flex-row items-center">
           <div className="md:pl-12">
             <p className="text-gray-700 text-lg mb-4">

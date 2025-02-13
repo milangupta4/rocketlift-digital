@@ -10,12 +10,13 @@ export default function BlogCard({ blog }: BlogCardProps) {
   const readingTime = Math.ceil((blog.wordCount || 0) / 200);
 
   return (
-    <Link href={`/blog/${blog.slug}`} className="text-primary hover:underline">
-    <div className="p-6 border rounded-lg shadow-md">
+    
+    <div className="p-6 border rounded-lg shadow-md bg-white">
+        <Link href={`/blog/${blog.slug}`} className="text-primary hover:underline">
       <div className="flex flex-row h-[20vh] md:h-[160px] overflow-hidden">
         <div className="blog-image-container order-last md:order-first w-[120px] md:w-[200px] min-w-[120px] md:min-w-[200px] md:mr-6 ml-4 md:ml-0">
           <Image 
-            src={blog.image || '/images/2025/02/json-ld/Website-marketing-tool.webp'} 
+            src={blog.image || '/images/Default-background.webp'} 
             alt={blog.title}
             width={200}
             height={250}
@@ -40,7 +41,7 @@ export default function BlogCard({ blog }: BlogCardProps) {
           </div>
         </div>
       </div>
+      </Link>
     </div>
-    </Link>
   );
 } 

@@ -4,7 +4,7 @@ title: "A guide to creating a sitemap for your website"
 date: "2025-02-12"
 author: "Your Name"
 excerpt: "Whether using WordPress, Next.js, Shopify or your own Website, this guide will help you create a sitemap for your website."
-image: "/images/2025/02/json-ld/Website-marketing-tool.webp"
+image: "/images/2025/02/sitemap/Sitemap-post-logo.webp"
 categories: ["SEO", "Technical"]
 ---
 

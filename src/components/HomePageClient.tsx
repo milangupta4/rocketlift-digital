@@ -37,7 +37,7 @@ export function HomePageClient({ children }: { children: React.ReactNode }) {
       {children}
 
       {/* CTA Section */}
-      <section className="text-center py-16 bg-primary text-primary-foreground">
+      <section className="text-center py-16 bg-primary text-primary-foreground home-alternating-background">
         <h2 className="text-3xl font-semibold mb-4">Ready to Accelerate Your Growth?</h2>
         <p className="text-lg mb-8">Join RocketLift today and take your business to the next level with our expert strategies.</p>
         <Button 

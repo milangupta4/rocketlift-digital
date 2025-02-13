@@ -6,6 +6,7 @@ author: "Your Name"
 excerpt: "JSON-LD is a way to add structured data to your website to improve SEO"
 categories: ["SEO", "Technical"]
 featured: true
+image: "/images/2025/02/G2-blog/Trust-Platforms.webp"
 ---
 
 JSON-LD stands for Javascript Object Notation for Linked Data

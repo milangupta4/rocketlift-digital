@@ -5,6 +5,7 @@ date: "2024-03-19"
 author: "Your Name"
 excerpt: "Maximizing G2, Capterra, TrustRadius, and Trustpilot for SaaS Growth"
 categories: ["Marketing"]
+image: "/images/2025/02/json-ld/Website-marketing-tool.webp"
 ---
 
 G2, Capterra, TrustRadius, and Trustpilot are the most popular software review platforms. They are used by SaaS companies to showcase their product and get more customers.

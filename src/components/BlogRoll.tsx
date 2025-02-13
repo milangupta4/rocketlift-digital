@@ -15,7 +15,6 @@ export default function BlogRoll({ numberOfPosts, categories, featured, postIds 
   
     return (
       <section className="container mx-auto px-4">
-        <h2 className="text-3xl font-semibold mb-8 text-center">Latest Blog Posts</h2>
         <div className="space-y-6">
           {latestBlogs.map((blog) => (
             <BlogCard key={blog.slug} blog={blog} />

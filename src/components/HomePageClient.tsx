@@ -41,7 +41,7 @@ export function HomePageClient({ children }: { children: React.ReactNode }) {
         <h2 className="text-3xl font-semibold mb-4">Ready to Accelerate Your Growth?</h2>
         <p className="text-lg mb-8">Join RocketLift today and take your business to the next level with our expert strategies.</p>
         <Button 
-          className="px-8 py-6 text-lg bg-blue-200 hover:bg-blue-300 rounded-full shadow-lg hover:shadow-xl transition-all duration-200" 
+          className="px-16 py-4 text-lg bg-blue-200 hover:bg-blue-300 rounded-full shadow-lg hover:shadow-xl transition-all duration-200" 
           onClick={handleOpenModal}
         >
           Get Started Now

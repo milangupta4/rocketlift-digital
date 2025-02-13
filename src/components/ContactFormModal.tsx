@@ -77,12 +77,12 @@ export default function ContactFormModal({ onClose }: ContactFormModalProps) {
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
       <div className="bg-white rounded-lg w-11/12 md:w-1/2 lg:w-1/3 p-6 relative">
-        <button
+        <Button
           onClick={onClose}
           className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
         >
           &times;
-        </button>
+        </Button>
         <h2 className="text-2xl font-semibold mb-4">Contact Us</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
@@ -158,8 +158,12 @@ export default function ContactFormModal({ onClose }: ContactFormModalProps) {
           </div>
 
           <div className="flex justify-end">
-            <Button type="submit" className="px-4 py-2">
-              Submit
+            <Button 
+              type="submit" 
+              className="px-6 py-2 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white rounded-full transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              disabled={submitStatus === 'success'}
+            >
+              {submitStatus === 'success' ? 'Submitted!' : 'Submit'}
             </Button>
           </div>
         </form>

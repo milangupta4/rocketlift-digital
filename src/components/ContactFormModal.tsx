@@ -166,7 +166,7 @@ export default function ContactFormModal({ onClose }: ContactFormModalProps) {
         
         {submitStatus === 'success' && (
           <div className="text-green-600 mt-4">
-            Thank you for your submission! We'll be in touch soon.
+            Thank you for your submission! We&apos;ll be in touch soon.
           </div>
         )}
         

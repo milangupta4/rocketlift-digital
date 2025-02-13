@@ -18,10 +18,16 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <FeaturesSection />
+      <div className="container mx-auto px-4 py-8 w-full md:w-[80%]">
+        <FeaturesSection />
+      </div>
 
       {/* Blog Roll Section */}
-      <BlogRoll />
+      <div className="container mx-auto px-4 py-8 w-full md:w-[70%]">
+        <BlogRoll 
+          numberOfPosts={3}
+        />
+      </div>
 
       {/* About Us Section */}
       <section className="container mx-auto px-4">

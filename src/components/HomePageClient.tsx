@@ -1,3 +1,5 @@
+// Delete this file, not needed anymore
+
 "use client";
 
 import { useState } from 'react';

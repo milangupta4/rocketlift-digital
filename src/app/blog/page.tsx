@@ -1,4 +1,4 @@
-import BlogRoll from '@/components/BlogRoll'; // Import BlogRoll
+import BlogRoll from '@/components/sections/BlogRoll'; // Import BlogRoll
 
 
 export const metadata = {

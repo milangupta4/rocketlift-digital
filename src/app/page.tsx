@@ -1,28 +1,30 @@
 import { FeaturesSection } from '@/components/sections/FeaturesSection';
-import BlogRoll from '@/components/BlogRoll';
-import { HomePageClient } from '@/components/HomePageClient';
+import BlogRoll from '@/components/sections/BlogRoll';
+import { HeroSection } from '@/components/sections/HeroSection';
+import { SectionContainer } from '@/components/sections/SectionContainer';
+import { SectionHeader } from '@/components/sections/SectionHeader';
+import { ContactButton } from '@/components/contact/ContactButton';
 
 export default function Home() {
   return (
-    <HomePageClient>
-      {/* Features Section */}
-      <div className="container mx-auto px-4 pb-8 w-full md:w-[80%]">
+    <div className="home-page space-y-8 md:space-y-16">
+      <HeroSection
+        title="SaaS Growth Strategies that Scale"
+        subtitle="We execute across SEO, Social Media, Ads, and Referral platforms to help you grow your business."
+        showContactButton={true}
+      />
+
+      <SectionContainer width="wide">
         <FeaturesSection />
-      </div>
+      </SectionContainer>
 
-      {/* Blog Roll Section */}
-      <div className="home-alternating-background">
-        <div className="container mx-auto px-4 py-8 w-full md:w-[70%]">
-          <h2 className="text-3xl font-semibold mb-8 md:mb-16 text-center">Latest Blog Posts</h2>
-          <BlogRoll 
-            numberOfPosts={3}
-          />
-        </div>
-      </div>
+      <SectionContainer width="medium" background="alternate">
+        <SectionHeader title="Latest Blog Posts" />
+        <BlogRoll numberOfPosts={3} />
+      </SectionContainer>
 
-      {/* About Us Section */}
-      <section className="container mx-auto px-4 w-full md:w-[60%]">
-        <h2 className="text-3xl font-semibold mb-8 text-center">Our Growth Philosophy: Experiment, Learn, Scale</h2>
+      <SectionContainer width="narrow">
+        <SectionHeader title="Our Growth Philosophy: Experiment, Learn, Scale" />
         <div className="flex flex-col md:flex-row items-center">
           <div className="md:pl-12">
             <p className="text-gray-700 text-lg mb-4">
@@ -36,7 +38,17 @@ export default function Home() {
             </p>
           </div>
         </div>
-      </section>
-    </HomePageClient>
+      </SectionContainer>
+
+      <SectionContainer background="alternate">
+        <div className="text-center">
+          <SectionHeader title="Ready to Accelerate Your Growth?" />
+          <p className="text-lg mb-8">
+            Join RocketLift today and take your business to the next level with our expert strategies.
+          </p>
+          <ContactButton variant="hero">Get Started Now</ContactButton>
+        </div>
+      </SectionContainer>
+    </div>
   );
 }

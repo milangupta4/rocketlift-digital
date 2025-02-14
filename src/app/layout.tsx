@@ -4,6 +4,8 @@ import "./globals.css";
 import '@/styles/custom-styles.css';
 import { Layout } from '@/components/layout'; 
 import Script from 'next/script'
+import { ContactFormProvider } from '@/contexts/ContactFormContext';
+import { ContactFormModal } from '@/components/contact/ContactFormModal';
 
 
 const geistSans = Geist({
@@ -53,9 +55,12 @@ export default function RootLayout({
             style={{ display: 'none', visibility: 'hidden' }}
           />
         </noscript>
-        <Layout>
-        {children}
-        </Layout>
+        <ContactFormProvider>
+          <Layout>
+            {children}
+          </Layout>
+          <ContactFormModal />
+        </ContactFormProvider>
       </body>
     </html>
   );

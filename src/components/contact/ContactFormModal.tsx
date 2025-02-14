@@ -1,13 +1,8 @@
-// Delete this file, not needed anymore
-
 "use client";
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-
-interface ContactFormModalProps {
-  onClose: () => void;
-}
+import { useContactForm } from '@/contexts/ContactFormContext';
 
 interface ContactFormData {
   name: string;
@@ -16,7 +11,8 @@ interface ContactFormData {
   needHelpWith: string[];
 }
 
-export default function ContactFormModal({ onClose }: ContactFormModalProps) {
+export function ContactFormModal() {
+  const { isModalOpen, closeModal } = useContactForm();
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     companyName: '',
@@ -45,7 +41,6 @@ export default function ContactFormModal({ onClose }: ContactFormModalProps) {
     setSubmitStatus('idle');
     
     try {
-      // Make API request
       const response = await fetch('https://api.milangupta.io/api/rocketlift-contact', {
         method: 'POST',
         headers: {
@@ -58,7 +53,6 @@ export default function ContactFormModal({ onClose }: ContactFormModalProps) {
         throw new Error('Network response was not ok');
       }
 
-      // Store in localStorage for backup
       const submissions = JSON.parse(localStorage.getItem('contactSubmissions') || '[]');
       submissions.push({
         ...formData,
@@ -68,7 +62,7 @@ export default function ContactFormModal({ onClose }: ContactFormModalProps) {
       
       setSubmitStatus('success');
       setTimeout(() => {
-        onClose();
+        closeModal();
       }, 2000);
     } catch (error) {
       console.error('Form submission error:', error);
@@ -76,11 +70,13 @@ export default function ContactFormModal({ onClose }: ContactFormModalProps) {
     }
   };
 
+  if (!isModalOpen) return null;
+
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
       <div className="bg-white rounded-lg w-11/12 md:w-1/2 lg:w-1/3 p-6 relative">
         <Button
-          onClick={onClose}
+          onClick={closeModal}
           className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
         >
           &times;

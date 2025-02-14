@@ -1,5 +1,5 @@
 import { getAllBlogs, filterBlogs } from '@/lib/blog';
-import BlogCard from '@/components/BlogCard';
+import BlogCard from '@/components/ui/BlogCard';
 
 interface BlogRollProps {
   numberOfPosts?: number;

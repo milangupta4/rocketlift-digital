@@ -14,7 +14,7 @@ export default function BlogRoll({ numberOfPosts, categories, featured, postIds 
     const latestBlogs = filterBlogs(allBlogs, { numberOfPosts, categories, featured, postIds });
   
     return (
-      <section className="container mx-auto px-4">
+      <section className="container mx-auto px-0.1 md:px-4">
         <div className="space-y-6">
           {latestBlogs.map((blog) => (
             <BlogCard key={blog.slug} blog={blog} />

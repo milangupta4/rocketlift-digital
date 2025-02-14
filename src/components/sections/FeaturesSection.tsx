@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export function FeaturesSection() {
   return (
-    <section className="container mx-auto px-4">
+    <section className="container mx-auto px-1 md:px-4">
       <h2 className="text-3xl font-semibold mb-8 md:mb-16 text-center leading-snug">We bring a full-stack toolkit to help grow your business</h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 grid-rows-auto">
         <Link href="/icp-definition">

@@ -13,9 +13,11 @@ export function Navigation() {
           <Image src={rocketImage} alt="RocketLift" className="logo-image inline-block w-12 h-16 pr-4"/> 
           <div>RocketLift</div>
         </LogoContainer>
-        <div className="flex items-center space-x-4 pr-20 py-2">
-          <Link href="/blog" className="hover:text-primary">Blog</Link>
-          <Link href="https://www.milangupta.io" className="hover:text-primary">About</Link>
+        <div className="flex items-center space-x-4 pr-0 md:pr-20 py-2">
+          <div className="hidden md:flex space-x-4">
+            <Link href="/blog" className="hover:text-primary">Blog</Link>
+            <Link href="https://www.milangupta.io" className="hover:text-primary">About</Link>
+          </div>
           <ContactButton variant="navbar" />
         </div>
       </div>

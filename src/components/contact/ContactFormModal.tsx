@@ -74,7 +74,7 @@ export function ContactFormModal() {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-      <div className="bg-white rounded-lg w-11/12 md:w-1/2 lg:w-1/3 p-6 relative">
+      <div className="bg-white rounded-lg w-full max-w-md sm:max-w-lg md:max-w-xl p-6 relative mx-4">
         <Button
           onClick={closeModal}
           className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
@@ -130,7 +130,7 @@ export function ContactFormModal() {
           <div>
             <span className="block text-sm font-medium text-gray-700 mb-2">Need Help With</span>
             <div className="flex flex-wrap gap-2">
-              {['Email marketing', 'SEO Content'].map((option) => (
+              {['Email marketing', 'SEO Content', 'Technical SEO Audit', 'Marketing Analytics Dashboard'].map((option) => (
                 <button
                   key={option}
                   type="button"

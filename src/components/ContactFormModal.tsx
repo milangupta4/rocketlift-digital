@@ -134,7 +134,7 @@ export default function ContactFormModal({ onClose }: ContactFormModalProps) {
           <div>
             <span className="block text-sm font-medium text-gray-700 mb-2">Need Help With</span>
             <div className="flex flex-wrap gap-2">
-              {['Email marketing', 'SEO Content'].map((option) => (
+              {['Email marketing', 'SEO Content', 'Technical SEO Audit', 'Marketing AnalyticsDashboard'].map((option) => (
                 <button
                   key={option}
                   type="button"

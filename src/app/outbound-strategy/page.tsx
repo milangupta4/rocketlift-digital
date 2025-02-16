@@ -1,5 +1,13 @@
+import { LandingPageLayout } from '@/components/layout/LandingPageLayout';
+
+export const metadata = {
+  title: 'Outbound Strategy',
+  description: 'Design your outbound strategy',
+};
+
 export default function OutboundStrategy() {
     return (
+      <LandingPageLayout>
       <div className="lp space-y-8 md:space-y-16">
         <section className="hero-section text-center px-4 md:px-6">
           <h1 className="text-3xl md:text-4xl font-bold py-6 md:py-12 leading-tight">
@@ -10,5 +18,6 @@ export default function OutboundStrategy() {
           </h2>
         </section>
       </div>
+      </LandingPageLayout>
     );
   }

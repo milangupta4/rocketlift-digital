@@ -3,17 +3,22 @@ import { LandingPageLayout } from '@/components/layout/LandingPageLayout';
 import { SectionContainer } from '@/components/sections/SectionContainer';
 import { SectionHeader } from '@/components/sections/SectionHeader';
 
+export const metadata = {
+  title: 'Revenue-First Analytics',
+  description: 'We create dashboards that connect marketing performance, pipeline & revenue.',
+};
+
 export default function RevenueFirstAnalytics() {
   return (
-    <LandingPageLayout>
-      <HeroSection
-        title="Revenue-first analytics"
-        subtitle="We create dashboards that connect marketing performance, pipeline & revenue."
-      />
-      
-      <SectionContainer width="medium">
-        <SectionHeader title="We provide full set of solutions to helping you grow your business" />
-      </SectionContainer>
-    </LandingPageLayout>
+      <LandingPageLayout>
+        <HeroSection
+          title="Revenue-first analytics"
+          subtitle="We create dashboards that connect marketing performance, pipeline & revenue."
+        />
+        
+        <SectionContainer width="medium">
+          <SectionHeader title="We provide full set of solutions to helping you grow your business" />
+        </SectionContainer>
+      </LandingPageLayout>
   );
 }

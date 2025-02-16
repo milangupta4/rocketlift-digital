@@ -1,8 +1,7 @@
-import BlogRoll from '@/components/sections/BlogRoll'; // Import BlogRoll
-
+import BlogRoll from '@/components/sections/BlogRoll';
 
 export const metadata = {
-  title: 'Blog | RocketLift Digital',
+  title: 'Blog',
   description: 'Read the latest articles and updates from RocketLift Digital.',
 };
 

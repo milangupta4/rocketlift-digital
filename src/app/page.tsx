@@ -4,6 +4,48 @@ import { HeroSection } from '@/components/sections/HeroSection';
 import { SectionContainer } from '@/components/sections/SectionContainer';
 import { SectionHeader } from '@/components/sections/SectionHeader';
 import { ContactButton } from '@/components/contact/ContactButton';
+import { Metadata } from 'next';
+
+export const generateMetadata = async (): Promise<Metadata> => {
+  return {
+    title: 'RocketLift Digital - SaaS Growth Strategies',
+    description: 'We drive SEO, Ads, and Referral programs to help you grow your business.',
+    openGraph: {
+      title: 'RocketLift Digital - SaaS Growth Strategies',
+      description: 'We drive SEO, Ads, and Referral programs to help you grow your business.',
+      images: [
+        {
+          url: 'images/RocketLift-SEO-banner.png',
+          width: 800,
+          height: 600,
+          alt: 'RocketLift Digital SEO Banner',
+        },
+      ],
+    },
+    alternates: {
+      canonical: 'https://www.rocketlift.co'
+    },
+    verification: {
+      other: {
+        'structured-data': JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'WebPage',
+          'name': 'RocketLift',
+          'description': 'SaaS Growth Strategies that Scale',
+          'url': 'https://www.rocketlift.co',
+          'publisher': {
+            '@type': 'Organization',
+            'name': 'RocketLift Digital',
+            'logo': {
+              '@type': 'ImageObject',
+              'url': 'https://www.rocketlift.co/images/logo.png'
+            }
+          }
+        })
+      }
+    }
+  };
+};
 
 export default function Home() {
   return (

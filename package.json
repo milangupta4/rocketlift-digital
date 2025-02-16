@@ -10,7 +10,6 @@
     "pages:build": "npm run build",
     "deploy": "npm run pages:build",
     "postbuild": ""
-
   },
   "engines": {
     "node": "20.10.0",

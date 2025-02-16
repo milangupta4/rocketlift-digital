@@ -7,7 +7,6 @@ import Script from 'next/script'
 import { ContactFormProvider } from '@/contexts/ContactFormContext';
 import { ContactFormModal } from '@/components/contact/ContactFormModal';
 
-
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -19,16 +18,39 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "RocketLift Digital",
-  description: "Build your Digital Brand",
+  metadataBase: new URL('https://www.rocketlift.co'),
+  title: {
+    default: 'RocketLift Digital',
+    template: '%s | RocketLift Digital'
+  },
+  description: 'Build your Digital Brand',
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://www.rocketlift.co/',
+    siteName: 'RocketLift',
+  },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
+  },
 };
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <head>
         <Script
           id="gtm"
@@ -44,9 +66,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className="min-h-screen font-sans antialiased">
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-576T8GM3"
@@ -56,9 +76,7 @@ export default function RootLayout({
           />
         </noscript>
         <ContactFormProvider>
-          <Layout>
-            {children}
-          </Layout>
+          <Layout>{children}</Layout>
           <ContactFormModal />
         </ContactFormProvider>
       </body>

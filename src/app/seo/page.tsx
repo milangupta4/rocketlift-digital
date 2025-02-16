@@ -4,6 +4,11 @@ import { HeroSection } from '@/components/sections/HeroSection';
 import { SectionContainer } from '@/components/sections/SectionContainer';
 import { SectionHeader } from '@/components/sections/SectionHeader';
 
+export const metadata = {
+  title: 'SEO',
+  description: 'We help you build an SEO strategy, founded on good quality content and a solid foundation.',
+};
+
 export default function SEOPage() {
   return (
     <LandingPageLayout>

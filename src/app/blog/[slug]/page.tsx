@@ -21,11 +21,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const blog: BlogPost | null = getBlogData(slug);
 
   if (!blog) {
-    return {};
+    return {
+      title: 'Blog Post Not Found',
+      description: 'The requested blog post could not be found.',
+    };
   }
 
   return {
-    title: `${blog.title} | RocketLift Digital`,
+    title: blog.title,
     description: blog.excerpt || '',
   };
 }
@@ -42,11 +45,13 @@ export default async function BlogPostPage({ params }: PageProps) {
   return (
     <article className="container mx-auto px-4 py-8 w-full md:w-[60%]">
       <h1 className="text-4xl font-bold mb-4">{blog.title}</h1>
-      <p className="text-gray-600 mb-6 py-4"><span>{new Date(blog.date).toLocaleDateString('en-US', {
-                day: '2-digit',
-                month: 'long',
-                year: 'numeric'
-              })}</span> | <span className="px-8">Reading time: {readingTime} minutes</span></p>
+      <p className="text-gray-600 mb-6 py-4">
+        <span>{new Date(blog.date).toLocaleDateString('en-US', {
+          day: '2-digit',
+          month: 'long',
+          year: 'numeric'
+        })}</span> | <span className="px-8">Reading time: {readingTime} minutes</span>
+      </p>
       <div className="prose prose-lg">
         <ReactMarkdown 
           remarkPlugins={[remarkGfm]}

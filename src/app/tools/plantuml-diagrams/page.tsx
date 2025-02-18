@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import Script from 'next/script';
 
@@ -34,25 +34,25 @@ const PlantUMLEditor = () => {
   const [isExporting, setIsExporting] = useState(false);
   const [isScriptsLoaded, setIsScriptsLoaded] = useState(false);
 
-  useEffect(() => {
-    if (isScriptsLoaded) {
-      renderDiagram();
-    }
-  }, [plantUMLCode, isScriptsLoaded]);
-
-  const renderDiagram = async () => {
+  const renderDiagram = useCallback(async () => {
     try {
       setError('');
-      // Use plantuml-encoder to encode the diagram
       const encoded = window.plantumlEncoder.encode(plantUMLCode);
       const container = document.getElementById('diagram-output');
       if (container) {
         container.innerHTML = `<img src="https://www.plantuml.com/plantuml/png/${encoded}" alt="PlantUML Diagram" />`;
       }
-    } catch (err: any) {
-      setError(err.message || 'An error occurred while rendering the diagram');
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'An error occurred while rendering the diagram';
+      setError(errorMessage);
     }
-  };
+  }, [plantUMLCode]);
+
+  useEffect(() => {
+    if (isScriptsLoaded) {
+      renderDiagram();
+    }
+  }, [isScriptsLoaded, renderDiagram]);
 
   const exportAsImage = async () => {
     try {
@@ -62,15 +62,15 @@ const PlantUMLEditor = () => {
       const encoded = window.plantumlEncoder.encode(plantUMLCode);
       const imageUrl = `https://www.plantuml.com/plantuml/png/${encoded}`;
       
-      // Create a temporary link to download the image
       const downloadLink = document.createElement('a');
       downloadLink.href = imageUrl;
       downloadLink.download = 'plantuml-diagram.png';
       downloadLink.click();
       
       setIsExporting(false);
-    } catch (err: any) {
-      setError(err.message || 'Failed to export diagram');
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'Failed to export diagram';
+      setError(errorMessage);
       setIsExporting(false);
     }
   };

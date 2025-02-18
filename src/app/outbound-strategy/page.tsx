@@ -2,7 +2,6 @@ import { LandingPageLayout } from '@/components/layout/LandingPageLayout';
 import { SectionContainer } from '@/components/sections/SectionContainer';
 import { SectionHeader } from '@/components/sections/SectionHeader';
 import { Card } from '@/components/ui/card';
-import Image from 'next/image';
 
 export const metadata = {
   title: 'Outbound Strategy',

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import mermaid from 'mermaid';
 import Link from 'next/link';
 
@@ -26,7 +26,7 @@ const MermaidEditor = () => {
     });
   }, []);
 
-  const renderDiagram = async () => {
+  const renderDiagram = useCallback(async () => {
     try {
       setError('');
       const { svg } = await mermaid.render('mermaid-diagram', mermaidCode);
@@ -34,10 +34,15 @@ const MermaidEditor = () => {
       if (container) {
         container.innerHTML = svg;
       }
-    } catch (err: any) {
-      setError(err.message || 'An error occurred while rendering the diagram');
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'An error occurred while rendering the diagram';
+      setError(errorMessage);
     }
-  };
+  }, [mermaidCode]);
+
+  useEffect(() => {
+    renderDiagram();
+  }, [renderDiagram]);
 
   const exportAsImage = async () => {
     try {
@@ -131,15 +136,12 @@ const MermaidEditor = () => {
       
       await imageLoadPromise;
       setIsExporting(false);
-    } catch (err: any) {
-      setError(err.message || 'Failed to export diagram');
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'Failed to export diagram';
+      setError(errorMessage);
       setIsExporting(false);
     }
   };
-
-  useEffect(() => {
-    renderDiagram();
-  }, [mermaidCode, customStyle]);
 
   return (
     <div className="min-h-screen p-6 bg-gray-50">

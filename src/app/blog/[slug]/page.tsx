@@ -6,6 +6,7 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { MDXImage } from '@/components/MDXImage';
+import { CodeBlock } from '@/components/ui/CodeBlock';
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -56,7 +57,12 @@ export default async function BlogPostPage({ params }: PageProps) {
         <ReactMarkdown 
           remarkPlugins={[remarkGfm]}
           components={{
-            img: ({ src, alt }) => <MDXImage src={src || ''} alt={alt || ''} />
+            img: ({ src, alt }) => <MDXImage src={src || ''} alt={alt || ''} />,
+            code: ({ className, children }) => (
+              <CodeBlock className={className}>
+                {children}
+              </CodeBlock>
+            )
           }}
         >
           {blog.content}

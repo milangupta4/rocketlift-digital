@@ -2,7 +2,7 @@
 post_id: "2"
 title: "A guide to creating a sitemap for your website"
 date: "2025-02-12"
-author: "Your Name"
+author: "Milan Gupta"
 excerpt: "Whether using WordPress, Next.js, Shopify or your own Website, this guide will help you create a sitemap for your website."
 image: "/images/2025/02/sitemap/Sitemap-post-logo.webp"
 categories: ["SEO", "Technical"]
@@ -33,19 +33,25 @@ For example:
 1. Use the <lastmod> Attribute
 The <lastmod> tag indicates the last modification date of a page. This helps Google's crawlers prioritize fresh content, aligning with its recency algorithms.
 Example:
-xml
+
+```xml
 <url>
   <loc>https://example.com/blog-post</loc>
   <lastmod>2025-02-10</lastmod>
 </url>
+```
+
 1. Prioritize High-Value Pages
 Assign higher priority to dynamic or frequently updated pages (e.g., blog posts) using the <priority> tag. Static pages like "About Us" should have lower priority.
 Example:
-xml
+
+```xml
 <url>
   <loc>https://example.com/home</loc>
   <priority>1.0</priority>
 </url>
+```
+
 1. Avoid Duplicate Content
 Exclude duplicate or low-value pages (e.g., login pages) to optimize crawl budgets.
 1. Limit Sitemap Size
@@ -101,7 +107,8 @@ Next.js offers robust tools for generating both static and dynamic sitemaps.
 For simple websites, create a sitemap.xml file in the public/ directory.
 
 **Example:**
-xml
+
+```xml
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://example.com/</loc>
@@ -109,28 +116,40 @@ xml
     <priority>1.0</priority>
   </url>
 </urlset>
+```
 
 ### Dynamic Sitemap using next-sitemap:
 For dynamic sites with frequently changing content, use server-side rendering or libraries like next-sitemap.
 
 - Install the package:
 
-- npm install next-sitemap
+```bash
+npm install next-sitemap
+```
+
 - Create a configuration file (next-sitemap.config.js):
-- javascript
+
+```javascript
 module.exports = {
   siteUrl: 'https://example.com',
   generateRobotsTxt: true,
 };
+```
 
 Add a build script in package.json:
 
+```json
 "scripts": {
   "postbuild": "next-sitemap"
 }
+```
+
 Run the build command:
 
-- npm run build
+```bash
+npm run build
+```
+
 The sitemap will be generated in the public/ folder.
 
 ### Submitting Dynamic Sitemap:
@@ -152,5 +171,7 @@ LinkedIn's HTML Sitemap: User-friendly navigation for large directories.
 Airbnb Careers Sitemap: Comprehensive XML sitemap tailored for job listings.
 
 ## Conclusion
+
 A well-structured sitemap is essential for improving your website's SEO performance by ensuring efficient crawling and indexing by search engines like Google. Whether you're using WordPress, Shopify, or Next.js, leveraging platform-specific tools can simplify sitemap creation and management while adhering to best practices like prioritizing high-value pages and avoiding duplicate content.
+
 By following these guidelines and examples, you can optimize your website's visibility and ensure that both users and search engines can navigate it effectively!

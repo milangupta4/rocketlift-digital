@@ -11,8 +11,8 @@ export function Navigation() {
   const [isToolsOpen, setIsToolsOpen] = useState(false);
 
   return (
-    <nav className="border-b px-4 bg-white shadow-sm">
-      <div className="navbar container mx-auto flex items-center justify-between py-4">
+    <nav className="border-b px-4 bg-white shadow-sm sticky top-0">
+      <div className="navbar container mx-auto flex items-center justify-between py-2 md:py-0">
         <LogoContainer>
           <Image src={rocketImage} alt="RocketLift" className="logo-image inline-block w-12 h-16 pr-4"/> 
           <div className="text-xl font-semibold">RocketLift</div>

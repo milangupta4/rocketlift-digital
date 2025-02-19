@@ -19,7 +19,7 @@ export function SectionContainer({
   };
 
   return (
-    <div className={background === 'alternate' ? 'home-alternating-background' : ''}>
+    <div className={background === 'alternate' ? 'home-alternating-background' : 'default-section-background'}>
       <section className={`container mx-auto px-4 py-8 ${widthClasses[width]} ${className}`}>
         {children}
       </section>

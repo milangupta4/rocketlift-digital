@@ -23,7 +23,7 @@
 }
 
 /* Add media query for small screens */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .hero-section {
         height: auto; /* Change height to auto for better responsiveness */
         padding: 50px 20px; /* Reduce padding on small screens */
@@ -77,4 +77,13 @@ article img {
 
 .home-alternating-background {
   background-color:rgb(202,190,189, 0.2);
+}
+
+.default-background {
+  background-color: #ffffff;
+}
+
+.default-section-background {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
 }

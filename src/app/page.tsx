@@ -5,7 +5,7 @@ import { SectionContainer } from '@/components/sections/SectionContainer';
 import { SectionHeader } from '@/components/sections/SectionHeader';
 import { ContactButton } from '@/components/contact/ContactButton';
 import { Metadata } from 'next';
-
+import Image from 'next/image';
 export const generateMetadata = async (): Promise<Metadata> => {
   return {
     title: 'RocketLift Digital - SaaS Growth Strategies',
@@ -61,6 +61,22 @@ export default function Home() {
       </SectionContainer>
 
       <SectionContainer width="medium" background="alternate">
+        <SectionHeader title="We are your Ready-to-Go Marketing team" />
+        <div className="flex flex-col lg:flex-col items-center">
+            <p className="text-xl text-gray-700 mb-8 text-center">
+              We build full-stack Demand-Gen pipeline - from creating Top-of-funnel Content across channels, to directly increasing your leads & pipeline.
+            </p>
+            <Image 
+              src="/images/RocketLift-suite.webp"
+              alt="Marketing Pipeline Diagram showing Inbound and Outbound strategies leading to Pipeline & ARR"
+              className="w-full h-auto rounded-lg shadow-lg"
+              width={1000}
+              height={1000}
+            />
+        </div>
+      </SectionContainer>
+
+      <SectionContainer width="medium">
         <SectionHeader title="Latest Blog Posts" />
         <BlogRoll numberOfPosts={3} />
       </SectionContainer>

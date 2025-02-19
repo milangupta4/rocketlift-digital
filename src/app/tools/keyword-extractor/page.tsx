@@ -1,15 +1,48 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, KeyboardEvent } from 'react';
 import { Button } from '@/components/ui/button';
-import { Textarea } from '@/components/ui/textarea';
+import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
+import { UrlPill } from '@/components/ui/url-pill';
+import { isValidDomain, formatUrl } from '@/lib/url-utils';
+
+interface UrlEntry {
+  url: string;
+  isValid: boolean;
+}
 
 export default function KeywordExtractor() {
-  const [urls, setUrls] = useState<string>('');
+  const [currentUrl, setCurrentUrl] = useState('');
+  const [urlList, setUrlList] = useState<UrlEntry[]>([]);
   const [results, setResults] = useState<Record<string, Record<string, number>> | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const addUrl = (url: string) => {
+    const trimmedUrl = url.trim();
+    if (!trimmedUrl) return;
+
+    // Check if URL already exists
+    if (urlList.some(entry => entry.url === trimmedUrl)) {
+      return;
+    }
+
+    const isValid = isValidDomain(trimmedUrl);
+    setUrlList(prev => [...prev, { url: trimmedUrl, isValid }]);
+    setCurrentUrl('');
+  };
+
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' || e.key === ',') {
+      e.preventDefault();
+      addUrl(currentUrl);
+    }
+  };
+
+  const removeUrl = (indexToRemove: number) => {
+    setUrlList(prev => prev.filter((_, index) => index !== indexToRemove));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -17,18 +50,23 @@ export default function KeywordExtractor() {
     setError(null);
 
     try {
-      // Split URLs by newline and filter empty lines
-      const urlList = urls.split('\n').filter(url => url.trim());
-      
+      const validUrls = urlList
+        .filter(entry => entry.isValid)
+        .map(entry => formatUrl(entry.url));
+
+      if (validUrls.length === 0) {
+        throw new Error('No valid URLs to process');
+      }
+
       const response = await fetch('https://api.milangupta.io/api/keyword-extractor', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(
-          urlList.length === 1 
-            ? { url: urlList[0] }
-            : { urls: urlList }
+          validUrls.length === 1 
+            ? { url: validUrls[0] }
+            : { urls: validUrls }
         ),
       });
 
@@ -66,27 +104,40 @@ export default function KeywordExtractor() {
   };
 
   return (
-    <div className="container mx-auto py-8 w-full md:w-3/4">
+    <div className="container mx-auto py-8 px-4 w-full md:w-3/4">
       <h1 className="text-4xl font-bold mb-8">Keyword Extractor</h1>
       
       <div className="mb-8">
         <p className="text-lg mb-4">
-          Extract keywords and their frequencies from any webpage. Enter one URL per line.
+          Extract keywords and their frequencies from any webpage. Enter URLs one at a time.
         </p>
       </div>
 
       <form onSubmit={handleSubmit} className="mb-8">
         <div className="mb-4">
-          <Textarea
-            value={urls}
-            onChange={(e) => setUrls(e.target.value)}
-            placeholder="Enter URLs (one per line)"
-            rows={5}
-            className="w-full"
-            required
+          <Input
+            value={currentUrl}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCurrentUrl(e.target.value)}
+            onKeyDown={handleKeyDown}
+            placeholder="Enter a URL and press Enter or comma to add"
+            className="w-full mb-4"
           />
+          <div className="flex flex-wrap gap-2 mb-4">
+            {urlList.map((entry, index) => (
+              <UrlPill
+                key={index}
+                url={entry.url}
+                isValid={entry.isValid}
+                onRemove={() => removeUrl(index)}
+              />
+            ))}
+          </div>
         </div>
-        <Button type="submit" disabled={loading}>
+
+        <Button 
+          type="submit" 
+          disabled={loading || urlList.length === 0 || !urlList.some(entry => entry.isValid)}
+        >
           {loading ? 'Extracting...' : 'Extract Keywords'}
         </Button>
       </form>

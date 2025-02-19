@@ -20,6 +20,13 @@ export const tools: Tool[] = [
     description: 'Design UML diagrams including sequence, use case, and class diagrams with PlantUML syntax and live preview.',
     image: '/tools/plantuml.svg',
     path: '/tools/plantuml-diagrams'
+  },
+  {
+    id: 'keyword-extractor',
+    title: 'Keyword Extractor',
+    description: 'Extract and analyze keywords from any webpage. Supports single URL or batch processing of multiple URLs.',
+    image: '/tools/keywords.svg',
+    path: '/tools/keyword-extractor'
   }
 ];
 

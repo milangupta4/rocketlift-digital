@@ -40,6 +40,10 @@ export function getFooterNavigation(): NavSection[] {
         {
           title: 'PlantUML Diagram Editor',
           path: '/tools/plantuml-diagrams'
+        },
+        {
+          title: 'Keyword Extractor',
+          path: '/tools/keyword-extractor'
         }
       ]
     },

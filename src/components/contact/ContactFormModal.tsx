@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { useContactForm } from '@/contexts/ContactFormContext';
+import { config } from '@/lib/config';
 
 interface ContactFormData {
   name: string;
@@ -41,7 +42,7 @@ export function ContactFormModal() {
     setSubmitStatus('idle');
     
     try {
-      const response = await fetch('https://api.milangupta.io/api/rocketlift-contact', {
+      const response = await fetch(`${config.apiUrl}/api/rocketlift-contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

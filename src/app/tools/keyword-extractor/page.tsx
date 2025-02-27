@@ -6,6 +6,19 @@ import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
 import { UrlPill } from '@/components/ui/url-pill';
 import { isValidDomain, formatUrl } from '@/lib/url-utils';
+import { config } from '@/lib/config';
+
+interface KeywordInfo {
+  count: number;
+  isDomainSpecific: boolean;
+  tfidfScore?: number;
+}
+
+interface ApiResponse {
+  success: boolean;
+  keywords: Record<string, KeywordInfo>;
+  crawledPages: string[];
+}
 
 interface UrlEntry {
   url: string;
@@ -15,7 +28,7 @@ interface UrlEntry {
 export default function KeywordExtractor() {
   const [currentUrl, setCurrentUrl] = useState('');
   const [urlList, setUrlList] = useState<UrlEntry[]>([]);
-  const [results, setResults] = useState<Record<string, Record<string, number>> | null>(null);
+  const [results, setResults] = useState<ApiResponse | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -58,7 +71,7 @@ export default function KeywordExtractor() {
         throw new Error('No valid URLs to process');
       }
 
-      const response = await fetch('https://api.milangupta.io/api/keyword-extractor', {
+      const response = await fetch(`${config.apiUrl}/api/keyword-extractor`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -86,21 +99,69 @@ export default function KeywordExtractor() {
   const renderResults = () => {
     if (!results) return null;
 
-    return Object.entries(results).map(([url, keywords]) => (
-      <Card key={url} className="p-6 mb-4">
-        <h3 className="text-lg font-semibold mb-4">{url}</h3>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {Object.entries(keywords)
-            .sort(([, a], [, b]) => b - a)
-            .map(([keyword, count]) => (
-              <div key={keyword} className="flex justify-between items-center bg-gray-100 dark:bg-gray-800 p-2 rounded">
-                <span className="font-medium">{keyword}</span>
-                <span className="text-sm text-gray-600 dark:text-gray-400">{count}</span>
+    return (
+      <div className="space-y-6">
+        {/* Crawled Pages Section */}
+        <Card className="p-6">
+          <h3 className="text-lg font-semibold mb-4">Crawled Pages</h3>
+          <div className="space-y-2">
+            {results.crawledPages.map((page, index) => (
+              <div key={index} className="text-sm text-gray-600 dark:text-gray-400">
+                {page}
               </div>
             ))}
-        </div>
-      </Card>
-    ));
+          </div>
+        </Card>
+
+        {/* Keywords Section */}
+        <Card className="p-6">
+          <h3 className="text-lg font-semibold mb-4">Keywords Analysis</h3>
+          <div className="overflow-x-auto">
+            <table className="min-w-full divide-y divide-gray-200">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Keyword
+                  </th>
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Count
+                  </th>
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Domain Specific
+                  </th>
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    TF-IDF Score
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="bg-white divide-y divide-gray-200">
+                {Object.entries(results.keywords)
+                  .sort(([, a], [, b]) => b.count - a.count)
+                  .map(([keyword, info]) => (
+                    <tr key={keyword}>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        {keyword}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        {info.count}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm">
+                        <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+                          ${info.isDomainSpecific ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'}`}>
+                          {info.isDomainSpecific ? 'Yes' : 'No'}
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        {info.tfidfScore?.toFixed(4) || 'N/A'}
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          </div>
+        </Card>
+      </div>
+    );
   };
 
   return (

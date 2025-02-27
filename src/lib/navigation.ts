@@ -44,6 +44,10 @@ export function getFooterNavigation(): NavSection[] {
         {
           title: 'Keyword Extractor',
           path: '/tools/keyword-extractor'
+        },
+        {
+          title: 'Sitemap Converter',
+          path: '/tools/sitemap-converter'
         }
       ]
     },

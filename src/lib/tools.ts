@@ -27,6 +27,13 @@ export const tools: Tool[] = [
     description: 'Extract and analyze keywords from any webpage. Supports single URL or batch processing of multiple URLs.',
     image: '/tools/keywords.svg',
     path: '/tools/keyword-extractor'
+  },
+  {
+    id: 'sitemap-converter',
+    title: 'Sitemap Converter',
+    description: 'Convert any sitemap.xml file to CSV format for easy analysis and processing.',
+    image: '/tools/sitemap.svg',
+    path: '/tools/sitemap-converter'
   }
 ];
 

@@ -58,6 +58,18 @@ export function Navigation() {
                   >
                     PlantUML Diagram Editor
                   </Link>
+                  <Link 
+                    href="/tools/keyword-extractor"
+                    className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200"
+                  >
+                    Keyword Extractor
+                  </Link>
+                  <Link 
+                    href="/tools/sitemap-converter"
+                    className="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200"
+                  >
+                    Sitemap Parser
+                  </Link>
                 </div>
               )}
             </div>

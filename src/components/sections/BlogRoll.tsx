@@ -8,7 +8,7 @@ interface BlogRollProps {
   postIds?: string[];
 }
 
-export default function BlogRoll({ numberOfPosts, categories, featured, postIds }: BlogRollProps) {
+export default function BlogRoll({ numberOfPosts = undefined, categories, featured, postIds }: BlogRollProps) {
     const allBlogs = getAllBlogs();
   
     const latestBlogs = filterBlogs(allBlogs, { numberOfPosts, categories, featured, postIds });

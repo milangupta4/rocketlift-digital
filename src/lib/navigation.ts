@@ -23,10 +23,6 @@ export function getFooterNavigation(): NavSection[] {
     {
       title: 'Blog',
       items: [
-        {
-          title: 'All Posts',
-          path: '/blog'
-        },
         ...latestBlogs
       ]
     },

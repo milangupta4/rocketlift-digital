@@ -56,7 +56,7 @@ export function getAllBlogs(): BlogPost[] {
 export function filterBlogs(
   blogs: BlogPost[],
   {
-    numberOfPosts = 3,
+    numberOfPosts,
     categories = [],
     featured = false,
     postIds = [],
@@ -83,5 +83,6 @@ export function filterBlogs(
     filteredBlogs = filteredBlogs.filter(blog => postIds.includes(blog.post_id));
   }
 
-  return filteredBlogs.slice(0, numberOfPosts);
+  // Only slice if numberOfPosts is defined
+  return numberOfPosts ? filteredBlogs.slice(0, numberOfPosts) : filteredBlogs;
 }

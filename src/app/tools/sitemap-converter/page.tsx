@@ -28,13 +28,28 @@ export default function SitemapConverter() {
     setLoading(true);
     setError(null);
 
+    // Format and validate the URL
+    let formattedUrl = sitemapUrl.trim();
+    
+    // Add https:// if no protocol is specified
+    if (!formattedUrl.startsWith('http://') && !formattedUrl.startsWith('https://')) {
+      formattedUrl = `https://${formattedUrl}`;
+    }
+
+    // Check if it's a sitemap file
+    if (!formattedUrl.includes('sitemap') && !formattedUrl.endsWith('.xml')) {
+      setError('Please provide a valid sitemap URL (should contain "sitemap" or end with ".xml")');
+      setLoading(false);
+      return;
+    }
+
     try {
       const response = await fetch(`${config.apiUrl}/api/sitemap-converter`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ sitemapUrl }),
+        body: JSON.stringify({ sitemapUrl: formattedUrl }),
       });
 
       if (!response.ok) {
